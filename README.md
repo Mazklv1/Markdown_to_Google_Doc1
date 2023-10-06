@@ -85,104 +85,111 @@ To copy and paste and run a Markdown file content to App Script, follow these st
 Now you've successfully copied and run Markdown content in App Script from your Google Doc.
 
 
-# Steps to contribute and edit codes using the Github website’s UI:
+# Steps to Contribute and Edit Code Using the GitHub's Website UI:
+
+## 1. Fork the Repository:
+
+- Navigate to the Repository:
+  - Click your GitHub profile icon on the top right corner.
+    ![Profile Icon](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f0622e790fe181740679d_Profile%20Picture.jpg)
 
 
-### Fork the Repository:
+  - Select Your Repositories from the drop-down menu.
 
-1. **Navigate to the Repository:**
-   - Click your GitHub profile icon on the top right corner
-   - Select Your Repositories from the drop-down menu
-   -Go to the GitHub repository that you want to contribute to.
+    ![Dropdown menu selection](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f068a455f099d46fb9212_dropdown%20menu%20selection.png)
 
 
-2. **Fork the Repository:**
-   - Click the "Fork" button in the top right corner of the repository's page.
-   - This creates a copy (fork) of the repository in your GitHub account.
+  - Go to the GitHub repository that you want to contribute to.
+    ![Alt Repo list](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f0518d2f39ddc140e10b5_Repo%20list.jpg) 
+
+- Fork the Repository:
+  - Click the "Fork" button in the top right corner of the repository's page.
+    ![Fork](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f0b17912d191888dfc7ea_Fork.png)
 
 
-### Clone the Forked Repository:
+![Create new Fork](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f0c5424149356f1e7cda8_Create%20new%20fork.jpg)
 
-3. **Clone the Forked Repository:**
-   - Open a terminal or command prompt on your local machine.
-   - Use the `git clone` command to clone the forked repository to your machine.
+![Forking](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f0d9d9afcaade5215a040_Forking.jpg)
 
-   ```bash
-   git clone https://github.com/your-username/forked-repository.git
-   ```
+  - This creates a copy (fork) of the repository in your GitHub account.
 
-### Create a Branch:
+## 2. Create a Branch:
 
-4. **Create a New Branch:**
-   - Navigate to the cloned repository on your local machine.
-   - Create a new branch for your changes.
+- Create a New Branch:
+  - Visit your forked repository on GitHub.
+    ![Forked repository](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f0fdd68a83301862da34e_Forked%20repository.jpg)
 
 
-   ```bash
-   git checkout -b feature-branch
-   ```
 
-   Replace "feature-branch" with a descriptive name for your branch.
 
-### Make Changes:
+  - Navigate to the "Branches" section and create a new branch.
+    ![Navigate to branch](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f12348f458f91817bc60d_Navigate%20to%20branch.jpg)
 
-5. **Make Changes Locally:**
-   - Open the project files using a code editor.
-   - Make the necessary changes to the code.
 
-### Commit Changes:
+    ![New branch](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f14bb455f099d460663f9_New%20branch.jpg)
 
-6. **Commit Changes:**
-   - Save your changes and return to the terminal.
-   - Use the following commands to commit your changes.
 
-   ```bash
-   git add .
-   git commit -m "Description of changes"
-   ```
+    ![Create new branch](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f1655494f36508ebda88e_Create%20new%20branch.jpg)
 
-### Push Changes to Your Fork:
 
-7. **Push Changes to Your Fork:**
-   - Push your changes to your forked repository on GitHub.
 
-   ```bash
-   git push origin feature-branch
-   ```
+## 3. Make Changes:
 
-### Create a Pull Request:
+- Make Changes on GitHub:
+  - Open the project files on the GitHub web UI.
+  - Make the necessary edits to the code.
+  - Save and commit the changes on the GitHub website.
+    ![Open new branch](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f1b1988972afb0140f094_Open%20new%20branch.png)
 
-8. **Open a Pull Request:**
-   - Visit your forked repository on GitHub.
-   - Click on the "Pull Requests" tab.
-   - Click the "New Pull Request" button.
-   - Choose the branch you created as the base and compare branches.
+    ![Open your project file](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f1c5a4ec0391f2178cf61_Open%20project%20file.jpg)
 
-### Submit the Pull Request:
+    ![Edit to add changes](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f1dd3c38fa448e811547a_Edit%20to%20add%20changes.jpg)
 
-9. **Describe Changes and Submit:**
-   - Write a clear and descriptive title for your pull request.
-   - Provide additional details in the comment box about the changes you made.
-   - Click the "Create Pull Request" button.
 
-### Collaborate and Discuss:
+    ![Commit changes](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f1f49e675573506e2f08e_Commit%20changes.jpg)
 
-10. **Collaborate and Discuss:**
-    - Engage in any discussions or feedback provided by maintainers or contributors.
-    - Make additional changes if required based on the feedback.
+    ![Click Commit changes](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f20bc5ea86bea7fb0f791_Click%20Commit%20changes.jpg)
 
-### Merge the Pull Request:
+## 4. Create a Pull Request:
 
-11. **Merge the Pull Request:**
-    - Once your changes are approved and ready to be merged, a repository maintainer can merge your pull request.
+- Open a Pull Request:
+  - Visit your forked repository on GitHub.
+  - Click on the "Pull Requests" tab.
+    ![Pull requests tab](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f2267914c11ca17eb920e_Pull%20request%20tab.jpg)
 
-12. **Delete the Branch (Optional):**
-    - After your changes are merged, you can delete the branch locally and on your forked repository.
 
-    ```bash
-    git branch -d feature-branch
-    git push origin --delete feature-branch
-    ```
+  - Click the "New Pull Request" button.
+    ![New pull request button](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f23f668a83301863c0230_New%20pull%20request%20button.jpg)
 
-Congratulations! You've successfully contributed to a GitHub repository using the website's UI. Keep in mind that the process might vary slightly based on the repository's specific guidelines and structure.
 
+  - Choose the branch you created as the base and compare branches.
+
+- Describe Changes and Submit:
+  - Write a clear and descriptive title for your pull request.
+  - Provide additional details in the comment box about the changes you made.
+  - Click the "Create Pull Request" button.
+    ![Create pull request](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f262fc4eb2fbd3ecf2aa8_Create%20pull%20request.jpg)
+
+
+## 5. Collaborate and Discuss:
+
+- Engage in any discussions or feedback provided by maintainers or contributors.
+  - Respond to comments, make additional changes if required based on the feedback.
+    ![Pull request discussion](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f2848835f453a271f10b5_Discussion.jpg)
+
+
+## 6. Merge the Pull Request:
+
+- Once your changes are approved and ready to be merged, a repository maintainer can merge your pull request.
+  - This is done from the main repository's UI.
+    ![Merging the pull request](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f297029186d529f678f3c_Merge.jpg)
+
+
+    ![Confirm merge](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f2aed29ae15d10c7f34d3_Confirm%20merge.jpg)
+
+## 7. Delete the Branch (Optional):
+
+- After your changes are merged, you can delete the branch from the GitHub website UI.
+  - Navigate to the branches page on your forked repository.
+  - Locate the branch you want to delete and click the "delete" or "trash" icon.
+    ![Deleting the branch](https://uploads-ssl.webflow.com/65117cb442481e57ee6ac54a/651f2c15d2f39ddc142ac077_delete%20branch.jpg)
