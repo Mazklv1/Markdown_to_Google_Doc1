@@ -1,166 +1,83 @@
-function convertMarkdownToGoogleDocs() {
-  // Replace 'YOUR_MARKDOWN_TEXT' with the actual Markdown content
-  var markdownText = `
-# How to Work with Google Docs and App Script
-
-
-## Creating a Google Docs Document
-
-
-Creating a Google Docs document is a simple process that you can accomplish from your web browser. Here's a step-by-step guide:
-
-
-1. **Go to Google Docs:**
-   - Open your web browser and navigate to Google Docs.
-
-
-2. **Sign In:**
-   - If not already signed in, sign in to your Google Account. If you don't have an account, you can create one.
-
-
-3. **Access Google Docs:**
-   - Once signed in, you'll be redirected to Google Docs. If not, click the grid icon in the top right corner and select "Docs."
-
-
-4. **Create a New Document:**
-   - Click on the "+ Blank" button to create a new, empty Google Docs document.
-   - Alternatively, choose a template from the gallery for a pre-designed document.
-
-
-5. **Start Editing:**
-   - The new document opens in the editor, where you can type, format text, add images, and more.
-
-
-6. **Name Your Document:**
-   - Click on "Untitled document" at the top to give it a name. Enter the desired name and press "Enter."
-
-
-7. **Save and Access Later:**
-   - Google Docs automatically saves changes. To access later, go to Google Docs and find it in the list of documents.
-
-
-That's it! You've created a new Google Docs document, ready for collaboration and access from any device.
-
-
-## Opening App Script in Google Docs
-
-
-To open Google Apps Script from within Google Docs, follow these steps:
-
-
-1. **Open Google Docs:**
-   - Open your web browser and go to Google Docs.
-   - Sign in to your Google Account if not already signed in.
-
-
-2. **Access Script Editor:**
-   - Open the document where you want to create or edit a script.
-   - In the menu, go to "Extensions" > "Apps Script."
-
-
-3. **Script Editor:**
-   - This opens the Google Apps Script editor in a new tab.
-
-
-## Copying and Pasting Markdown Content to App Script
-
-
-To copy and paste and run a Markdown file content to App Script, follow these steps:
-
-
-1. **Open the Markdown File:**
-   - Open the Markdown file using a text editor like Notepad or Visual Studio Code.
-
-
-2. **Copy Content:**
-   - Select all content (Ctrl + A on Windows or Command + A on Mac) and copy (Ctrl + C on Windows or Command + C on Mac).
-
-
-3. **Open Google Apps Script Editor:**
-   - Go to [https://script.google.com](https://script.google.com), select your project, and open the script editor.
-
-
-4. **Create or Open Script File:**
-   - Create a new script file or open an existing one.
-
-
-5. **Paste Content:**
-   - In the script editor, click where you want to paste and paste the content (Ctrl + V on Windows or Command + V on Mac).
-
-
-6. **Review and Adjust:**
-   - Review and adjust formatting if needed.
-
-
-7. **Save the Script:**
-   - Save using the script editor's options.
-
-
-8. **Run the Function:**
-   - Click the play button (▶️) or right-click on the function and select "Run."
-
-
-9. **Authorize the Script:**
-   - If needed, authorize the script.
-
-
-10. **Review Logs:**
-    - Check logs by going to "View" > "Logs" in the script editor.
-
-
-11. **Navigate Back to Google Doc:**
-    - Go back to your Google Doc by clicking the tab on the left of the App Script.
-
-
-Now you've successfully copied and run Markdown content in App Script from your Google Doc.
-  `;
-
-
-  // Create a new Google Docs document
-  var newDocument = DocumentApp.create('Converted Google Docs Document');
-
-
-  // Access the body of the document
-  var body = newDocument.getBody();
-
-
-  // Convert Markdown to Google Docs format and append to the document
-  appendMarkdownToDocument(markdownText, body);
+function onOpen() {
+  // Add a custom menu to the Google Docs UI
+  var ui = DocumentApp.getUi();
+  ui.createMenu('Custom Menu')
+      .addItem('Master Format', 'masterFormat')
+      .addToUi();
 }
 
+function masterFormat() {
+  // Get the entire content of the Google Doc as markdown text
+  var doc = DocumentApp.getActiveDocument();
+  var body = doc.getBody();
+  var markdownText = body.getText();
+  
+  // Clear the existing content
+  body.clear();
+  
+  // Convert the markdown text to Google Docs formatting
+  markdownToGoogleDocs(markdownText);
+}
 
-function appendMarkdownToDocument(markdownText, body) {
-  // Split the Markdown text into paragraphs
-  var paragraphs = markdownText.split('\n\n');
+function markdownToGoogleDocs(markdown) {
+  // Get the active document
+  var doc = DocumentApp.getActiveDocument();
+  
+  // Split the markdown text into lines
+  var lines = markdown.split('\n');
+  
+  // Iterate over each line and process the markdown
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i];
+    var isBold = false;
 
+    // Check if the line starts with **
+    if (line.trim().startsWith('**') && line.trim().endsWith('**')) {
+      isBold = true;
+      line = line.trim().substring(2, line.trim().length - 2); // Remove **
+    }
 
-  // Iterate through paragraphs and append to the document
-  for (var i = 0; i < paragraphs.length; i++) {
-    var paragraphText = paragraphs[i].trim();
-   
-    // Skip empty paragraphs
-    if (paragraphText !== '') {
-      // Create a new paragraph in the document
-      var paragraph = body.appendParagraph(paragraphText);
-
-
-      // Set heading style for lines starting with #
-      if (paragraphText.startsWith('#')) {
-        // Placeholder for setting heading style, e.g., headingLevel = 1, 2, 3, ...
-        var headingLevel = getHeadingLevel(paragraphText);
-        paragraph.setHeading(headingLevel);
+    // Check for headers
+    if (line.startsWith('#')) {
+      var level = line.lastIndexOf('#') + 1;
+      var text = line.substr(level).trim();
+      var header = doc.getBody().appendParagraph(text);
+      header.setHeading(DocumentApp.ParagraphHeading['HEADING' + level]);
+      if (isBold) {
+        header.editAsText().setBold(0, text.length, true);
+      }
+    }
+    // Check for unordered lists
+    else if (line.trim().startsWith('-')) {
+      var text = line.trim().substr(1).trim();
+      var listItem = doc.getBody().appendListItem(text);
+      listItem.setGlyphType(DocumentApp.GlyphType.BULLET);
+      doc.getBody().appendParagraph(''); // Add blank space after bullet point
+    }
+    // Process normal text and bold/italic formatting
+    else {
+      var paragraph = doc.getBody().appendParagraph(line);
+      var text = paragraph.editAsText();
+      
+      // Apply bold formatting
+      var boldPattern = /\*\*(.*?)\*\*/g;
+      var match;
+      while (match = boldPattern.exec(line)) {
+        text.setBold(match.index, match.index + match[1].length + 1, true);
+        text.deleteText(match.index + match[1].length + 1, match.index + match[1].length + 2);
+        text.deleteText(match.index, match.index + 1);
+      }
+      
+      // Apply italic formatting
+      var italicPattern = /_(.*?)_/g;
+      while (match = italicPattern.exec(line)) {
+        text.setItalic(match.index, match.index + match[1].length + 1, true);
+        text.deleteText(match.index + match[1].length + 1, match.index + match[1].length + 2);
+        text.deleteText(match.index, match.index + 1);
       }
     }
   }
-}
-
-
-function getHeadingLevel(paragraphText) {
-  // Implement logic to determine heading level based on the number of '#' symbols
-  // You need to define how many '#' symbols correspond to each heading level
-  // For example, "# Heading 1" might have one '#' symbol, so heading level is 1
-  // "# Heading 2" might have two '#' symbols, so heading level is 2
-  // Adjust this logic based on your specific Markdown format
-  // This is a placeholder, replace it with your actual logic
-  return paragraphText.split('#').length - 1;
+  
+  // Save the document
+  doc.saveAndClose();
 }
