@@ -55,6 +55,37 @@ To copy and paste and run a Markdown file content to App Script, follow these st
 2. **Copy Content:**
    - Select all content (Ctrl + A on Windows or Command + A on Mac) and copy (Ctrl + C on Windows or Command + C on Mac).
 
+```
+### SOP Title: Managing Individual Priorities – Our Approach
+
+#### Purpose:
+Our aim is to align individual tasks with the company goals efficiently, with a focus on minimizing paperwork and maximizing focus.
+
+#### Scope:
+This guide applies to all team members, especially subject-matter experts in various departments.
+
+#### Procedure:
+
+1. *Identifying Your Priority:*
+   - Use your expertise to determine a top priority that aligns with both your department and the company’s goals. Consider the desired outcomes, associated timelines, and necessary resources.
+2. *Defending Your Priority Choice:*
+   - Be prepared to verbally explain why your chosen task is the most beneficial. We are looking for tasks that require minimal time and effort but deliver high value. Think of it as investing the least resources for the maximum outcome.
+3. *Separating Knowns from Unknowns & Doing What You Can:*
+   - Identify what you know and what is still uncertain regarding the priority. Formulate the unknowns into clear, concise questions or statements.
+   - Adhere to the principle of "do what you can." Utilize your skills and knowledge to contribute significantly to the completion of the prioritized task.
+4. *Requesting Assistance When Needed:*
+   - After applying your best efforts, reach out for help when necessary. Communicate your unknowns to the relevant departments via our communication platform, ensuring your queries are simple and digestible. Clearly specify the type of assistance needed and the expected timeframe.
+   - Asynchronous communication is encouraged to maintain workflow flexibility across departments.
+   - *Documentation:* Maintain a record of communications, requests for assistance, and responses – this is the only required documentation.
+5. *Adjusting to Changes and Feedback:*
+   - Regularly assess progress and be willing to make adjustments based on feedback, changing goals, or external factors. Be prepared to communicate and justify any changes made to the initial priority.
+6. *Review and Continuous Improvement:*
+   - Upon the completion of the task or project, participate in a monthly review session. This is an opportunity to assess the effectiveness of the process and identify areas for improvement.
+
+#### Review:
+This SOP will be reviewed and adjusted monthly to ensure its alignment with any changes in policies, practices, and organizational goals. Keep up the good work, everyone!
+```
+
 3. **Open Google Apps Script Editor:**
    - Go to [https://script.google.com](https://script.google.com), select your project, and open the script editor.
 
